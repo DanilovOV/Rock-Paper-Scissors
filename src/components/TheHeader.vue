@@ -2,14 +2,10 @@
 import bonusLogo from '@/assets/icons/logo-bonus.svg'
 import logo from '@/assets/icons/logo.svg'
 
-export interface Props {
+const props = defineProps<{
 	score: number
-	mode?: 'standart' | 'bonus'
-}
-
-const props = withDefaults(defineProps<Props>(), {
-	mode: 'standart',
-})
+	mode: GameMode
+}>()
 </script>
 
 <template>

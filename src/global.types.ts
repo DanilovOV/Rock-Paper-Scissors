@@ -1,0 +1,1 @@
+type GameMode = 'standart' | 'bonus'
