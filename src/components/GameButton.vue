@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import AppIcon from './global/AppIcon.vue'
 import type { GameElementValue } from '@/gameElements'
 
 defineProps<{ data: GameElementValue }>()
@@ -8,7 +7,7 @@ defineProps<{ data: GameElementValue }>()
 <template>
 	<div class="game-button" :style="{ background: data.color }">
 		<div class="game-button__inner">
-			<AppIcon :name="data.icon" />
+			<img :src="data.src" class="game-button__img" draggable="false" />
 		</div>
 	</div>
 </template>
@@ -19,11 +18,12 @@ defineProps<{ data: GameElementValue }>()
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 125px;
-	height: 125px;
+	width: clamp(90px, 30vw, 155px);
+	height: clamp(90px, 30vw, 155px);
 	border-radius: 50%;
 	box-shadow: inset 0 -4px 2px 1px rgba(0, 0, 0, 0.3);
 	cursor: pointer;
+	user-select: none;
 
 	&:hover {
 		#{$this}__inner {
@@ -36,13 +36,17 @@ defineProps<{ data: GameElementValue }>()
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 100px;
-		height: 100px;
+		width: calc(100% - 25px);
+		height: calc(100% - 25px);
 		border-radius: 50%;
 		background: var(--c-white);
 		color: var(--c-dark);
 		box-shadow: inset 0 4px 2px 1px rgba(0, 0, 0, 0.2);
 		transition: all 0.3s ease;
+	}
+
+	&__img {
+		width: 50%;
 	}
 }
 </style>

@@ -35,6 +35,10 @@ const props = defineProps<{
 	border-radius: 10px;
 	padding: 0 30px;
 
+	@media screen and (max-width: 475px) {
+		padding: 0 15px;
+	}
+
 	&__title {
 		display: flex;
 		align-items: center;
@@ -42,6 +46,10 @@ const props = defineProps<{
 
 	&__title-img {
 		max-height: 100px;
+
+		@media screen and (max-width: 475px) {
+			max-height: 70px;
+		}
 	}
 
 	&__score {
@@ -55,6 +63,10 @@ const props = defineProps<{
 		border-radius: 0.25em;
 		line-height: 0.9;
 		gap: 0.2em;
+
+		@media screen and (max-width: 475px) {
+			padding: 10px 17px;
+		}
 	}
 
 	&__score-label {
