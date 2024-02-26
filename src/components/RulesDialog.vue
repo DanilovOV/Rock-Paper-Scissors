@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import imgClose from '@/assets/icons/icon-close.svg'
+import { computed } from 'vue'
+
 import imgRules from '@/assets/icons/image-rules.svg'
 import imgBonus from '@/assets/icons/image-rules-bonus.svg'
-import { computed } from 'vue'
+import AppIcon from './global/AppIcon.vue'
 
 const props = defineProps<{
 	mode: GameMode
@@ -37,8 +38,8 @@ const closeModal = () => {
 				draggable="false"
 			/>
 
-			<button class="dialog__close" @click="isOpen = false">
-				<img :src="imgClose" title="Закрыть" alt="Закрыть" draggable="false" />
+			<button class="dialog__close" @click="closeModal">
+				<AppIcon name="Close" />
 			</button>
 		</div>
 	</div>
@@ -105,6 +106,12 @@ const closeModal = () => {
 		top: 0;
 		right: 0;
 		background-color: transparent;
+		color: #b5b8c8;
+		transition: color 0.3s ease;
+
+		&:hover {
+			color: var(--c-dark);
+		}
 	}
 }
 </style>
