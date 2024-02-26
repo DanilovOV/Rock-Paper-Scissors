@@ -13,7 +13,7 @@
 
 	&:hover {
 		background: var(--c-white);
-		color: #0027c5;
+		color: var(--c-text-dark);
 	}
 }
 </style>

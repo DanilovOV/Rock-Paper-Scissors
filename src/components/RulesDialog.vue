@@ -46,25 +46,30 @@ const closeModal = () => {
 
 <style scoped lang="scss">
 .dialog {
-	position: absolute;
-	inset: 0;
+	$this: &;
+	position: fixed;
+	top: 0;
+	left: 0;
 	z-index: 2;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
 	height: 100%;
-	padding: 0;
 	background-color: rgba(0, 0, 0, 0.5);
 
 	opacity: 0;
 	pointer-events: none;
-	transform: translateY(-30px);
+	transition: opacity 0.3s ease;
 
 	&.open {
 		opacity: 1;
 		pointer-events: all;
 		transform: none;
+
+		#{$this}__inner {
+			transform: none;
+		}
 	}
 
 	&__inner {
@@ -72,9 +77,13 @@ const closeModal = () => {
 		display: flex;
 		flex-direction: column;
 		width: fit-content;
+		height: fit-content;
 		padding: 24px;
 		background-color: var(--c-white);
 		border-radius: 32px;
+
+		transform: translateY(-30px);
+		transition: transform 0.3s ease;
 	}
 
 	&__title {
