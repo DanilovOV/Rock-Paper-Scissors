@@ -3,22 +3,49 @@ import GameButton from './GameButton.vue'
 import { gameElements } from '@/gameElements'
 
 defineProps<{ mode: GameMode }>()
+const emits = defineEmits<{
+	buttonChoosen: [GameEntities]
+}>()
 </script>
 
 <template>
 	<div class="board">
 		<div v-if="mode === 'standart'" class="board__standart">
-			<GameButton :data="gameElements.Rock" />
-			<GameButton :data="gameElements.Paper" />
-			<GameButton :data="gameElements.Scissors" />
+			<GameButton
+				:data="gameElements.rock"
+				@click="emits('buttonChoosen', 'rock')"
+			/>
+			<GameButton
+				:data="gameElements.paper"
+				@click="emits('buttonChoosen', 'paper')"
+			/>
+			<GameButton
+				:data="gameElements.scissors"
+				@click="emits('buttonChoosen', 'scissors')"
+			/>
 		</div>
 
 		<div v-if="mode === 'bonus'" class="board__bonus">
-			<GameButton :data="gameElements.Rock" />
-			<GameButton :data="gameElements.Paper" />
-			<GameButton :data="gameElements.Scissors" />
-			<GameButton :data="gameElements.Lizard" />
-			<GameButton :data="gameElements.Spock" />
+			<GameButton
+				:data="gameElements.rock"
+				@click="emits('buttonChoosen', 'rock')"
+			/>
+			<GameButton
+				:data="gameElements.paper"
+				@click="emits('buttonChoosen', 'paper')"
+			/>
+			<GameButton
+				:data="gameElements.scissors"
+				@click="emits('buttonChoosen', 'scissors')"
+			/>
+			<GameButton
+				:data="gameElements.lizard"
+				@click="emits('buttonChoosen', 'lizard')"
+			/>
+			<GameButton
+				:data="gameElements.spock"
+				@click="emits('buttonChoosen', 'spock')"
+			/>
 		</div>
 	</div>
 </template>
@@ -66,6 +93,7 @@ defineProps<{ mode: GameMode }>()
 
 	&__bonus {
 		margin-top: 40px;
+		padding-bottom: 50px;
 		background: url('/bg-pentagon.svg');
 		background-size: 70%;
 		background-repeat: no-repeat;
@@ -73,6 +101,7 @@ defineProps<{ mode: GameMode }>()
 
 		@media screen and (max-width: 475px) {
 			margin-top: 5px;
+			padding-bottom: 0;
 		}
 
 		& > div {

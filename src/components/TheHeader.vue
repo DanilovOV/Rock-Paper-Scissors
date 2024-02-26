@@ -31,9 +31,10 @@ const props = defineProps<{
 	justify-content: space-between;
 	align-items: center;
 	gap: 20px;
+	margin-bottom: 40px;
+	padding: 0 30px;
 	border: 2px solid #46556f;
 	border-radius: 10px;
-	padding: 0 30px;
 
 	@media screen and (max-width: 475px) {
 		padding: 0 15px;

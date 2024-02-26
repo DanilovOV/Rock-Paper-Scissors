@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import type { GameElementValue } from '@/gameElements'
 
-defineProps<{ data: GameElementValue }>()
+defineProps<{ data: GameElementValue; disabled?: boolean }>()
 </script>
 
 <template>
-	<div class="game-button" :style="{ background: data.color }">
+	<div
+		:class="['game-button', { disabled }]"
+		:style="{ background: data.color }"
+	>
 		<div class="game-button__inner">
 			<img :src="data.src" class="game-button__img" draggable="false" />
 		</div>
@@ -24,6 +27,10 @@ defineProps<{ data: GameElementValue }>()
 	box-shadow: inset 0 -4px 2px 1px rgba(0, 0, 0, 0.3);
 	cursor: pointer;
 	user-select: none;
+
+	&.disabled {
+		pointer-events: none;
+	}
 
 	&:hover {
 		#{$this}__inner {

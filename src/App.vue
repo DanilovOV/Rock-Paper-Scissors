@@ -1,32 +1,43 @@
 <script setup lang="ts">
 import GameBoard from './components/GameBoard.vue'
+import SelectionBoard from './components/SelectionBoard.vue'
 import TheAside from './components/TheAside.vue'
 import TheHeader from './components/TheHeader.vue'
 import { onMounted, ref } from 'vue'
 
-const gameMode = ref<GameMode>('standart')
 const score = ref<number>(0)
-
 const getScore = (): number => {
 	return Number(localStorage.getItem('rps-score')) | 0
 }
-
 const setScore = (newScore: number) => {
 	localStorage.setItem('rps-score', String(newScore))
 	score.value = newScore
 }
 
+const isComparsion = ref(false)
+const handleComparsion = (status: ComparsionStatus) => {
+	if (status === 'Draw') return
+	if (status === 'User') setScore(getScore() + 1)
+	if (status === 'AI') setScore(getScore() - 1)
+}
+
+const userChoise = ref<GameEntities>()
+const handleUserChoise = (choise: GameEntities) => {
+	userChoise.value = choise
+	isComparsion.value = true
+}
+
+const gameMode = ref<GameMode>('standart')
 const getMode = (): GameMode => {
 	return (localStorage.getItem('rps-score') as GameMode) || 'standart'
 }
-
 const setMode = (value: GameMode) => {
 	localStorage.setItem('rps-score', String(value))
 	gameMode.value = value
 }
-
 const toggleMode = () => {
 	setMode(gameMode.value === 'standart' ? 'bonus' : 'standart')
+	isComparsion.value = false
 }
 
 onMounted(() => {
@@ -40,7 +51,19 @@ onMounted(() => {
 		<div class="container">
 			<div class="game">
 				<TheHeader :score="score" :mode="gameMode" />
-				<GameBoard :mode="gameMode" class="game__board" />
+				<GameBoard
+					v-if="!isComparsion"
+					:mode="gameMode"
+					class="game__board"
+					@button-choosen="handleUserChoise"
+				/>
+				<SelectionBoard
+					v-else
+					:mode="gameMode"
+					:user-choise="userChoise"
+					@comparsion="handleComparsion"
+					@restart="isComparsion = false"
+				/>
 				<TheAside :mode="gameMode" @change-mode="toggleMode" />
 			</div>
 		</div>
@@ -66,7 +89,6 @@ onMounted(() => {
 
 	&__board {
 		flex: 1;
-		margin-top: 40px;
 	}
 }
 </style>
