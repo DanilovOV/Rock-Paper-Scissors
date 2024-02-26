@@ -10,10 +10,6 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
 	mode: 'standart',
 })
-
-const emits = defineEmits<{
-	changeMode: [bonus: 'standart' | 'bonus']
-}>()
 </script>
 
 <template>
