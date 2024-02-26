@@ -1,16 +1,27 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 
 interface Props {
 	name: string
 	width?: number
 	height?: number
 	stroke?: boolean
+	size?: number
+	defaultSize?: boolean
 }
+const defaultSize = 20
+const props = defineProps<Props>()
 
-const props = withDefaults(defineProps<Props>(), {
-	width: 20,
-	height: 20,
+const iconWidth = computed(() => {
+	return props.size || props.width || props.defaultSize
+		? defaultSize
+		: undefined
+})
+
+const iconHeight = computed(() => {
+	return props.size || props.height || props.defaultSize
+		? defaultSize
+		: undefined
 })
 
 const icon = defineAsyncComponent(
@@ -22,7 +33,7 @@ const icon = defineAsyncComponent(
 	<component
 		:is="icon"
 		:class="['svg', stroke ? 'stroke' : 'fill']"
-		:style="{ width, height }"
+		:style="{ width: iconWidth, height: iconHeight }"
 	/>
 </template>
 
