@@ -29,10 +29,10 @@ const handleUserChoise = (choise: GameEntities) => {
 
 const gameMode = ref<GameMode>('standart')
 const getMode = (): GameMode => {
-	return (localStorage.getItem('rps-score') as GameMode) || 'standart'
+	return (localStorage.getItem('rps-mode') as GameMode) || 'standart'
 }
 const setMode = (value: GameMode) => {
-	localStorage.setItem('rps-score', String(value))
+	localStorage.setItem('rps-mode', value)
 	gameMode.value = value
 }
 const toggleMode = () => {
