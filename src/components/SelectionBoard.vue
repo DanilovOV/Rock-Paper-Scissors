@@ -31,7 +31,7 @@ onMounted(() => {
 <template>
 	<div v-if="userChoise && aiChoise && winner" class="board">
 		<div class="board__choise">
-			<div>Вы выбрали</div>
+			<div class="board__choise-text">Вы выбрали</div>
 			<GameButton
 				:data="gameElements[userChoise]"
 				:class="{ winner: winner === 'User' }"
@@ -40,11 +40,13 @@ onMounted(() => {
 			/>
 		</div>
 		<div class="board__result">
-			<div>{{ UiComparsionStatus[winner] }}</div>
-			<AppButton @click="emits('restart')">Играть снова</AppButton>
+			<div class="board__result-text">{{ UiComparsionStatus[winner] }}</div>
+			<AppButton @click="emits('restart')" :type="'filled'"
+				>Играть снова</AppButton
+			>
 		</div>
 		<div class="board__choise">
-			<div>
+			<div class="board__choise-text">
 				Компьютер <br />
 				выбрал
 			</div>
@@ -64,14 +66,29 @@ onMounted(() => {
 	justify-content: space-between;
 	align-items: center;
 
+	@media screen and (max-width: 1024px) {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+
 	&__choise {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 30px;
+	}
+
+	&__choise-text {
+		display: flex;
+		align-items: center;
+		height: 40px;
 		text-transform: uppercase;
 		letter-spacing: 2px;
 		text-align: center;
+
+		@media screen and (max-width: 475px) {
+			font-size: 14px;
+		}
 	}
 
 	&__result {
@@ -81,6 +98,21 @@ onMounted(() => {
 		gap: 15px;
 		text-transform: uppercase;
 		letter-spacing: 2px;
+
+		@media screen and (max-width: 1024px) {
+			grid-column: 1/ 3;
+			grid-row: 2 / 3;
+			justify-self: center;
+			margin-top: 40px;
+		}
+	}
+
+	&__result-text {
+		font-size: 26px;
+
+		@media screen and (max-width: 475px) {
+			font-size: 22px;
+		}
 	}
 }
 

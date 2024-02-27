@@ -93,7 +93,7 @@ const emits = defineEmits<{
 
 	&__bonus {
 		margin-top: 40px;
-		padding-bottom: 50px;
+		margin-bottom: 50px;
 		background: url('/bg-pentagon.svg');
 		background-size: 70%;
 		background-repeat: no-repeat;

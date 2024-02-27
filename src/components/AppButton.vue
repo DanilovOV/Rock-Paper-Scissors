@@ -1,5 +1,13 @@
+<script setup lang="ts">
+type ButtonTypes = 'default' | 'filled'
+
+withDefaults(defineProps<{ type?: ButtonTypes }>(), {
+	type: 'default',
+})
+</script>
+
 <template>
-	<button class="button"><slot /></button>
+	<button :class="['button', type]"><slot /></button>
 </template>
 
 <style lang="scss" scoped>
@@ -14,6 +22,16 @@
 	&:hover {
 		background: var(--c-white);
 		color: var(--c-text-dark);
+	}
+
+	&.filled {
+		background: var(--c-white);
+		color: var(--c-text-dark);
+
+		&:hover {
+			background: transparent;
+			color: var(--c-text-base);
+		}
 	}
 }
 </style>

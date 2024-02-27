@@ -36,5 +36,13 @@ const openRulesModal = () => {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+
+	@media screen and (max-width: 1280px) {
+		position: static;
+		flex-direction: row;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin-top: 60px;
+	}
 }
 </style>

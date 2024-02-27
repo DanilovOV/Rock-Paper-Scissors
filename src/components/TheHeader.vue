@@ -80,8 +80,12 @@ const props = defineProps<{
 
 	&__score-value {
 		margin-top: 4px;
-		font-size: 30px;
+		font-size: 40px;
 		color: #3a4262;
+
+		@media screen and (max-width: 475px) {
+			font-size: 30px;
+		}
 	}
 }
 </style>
