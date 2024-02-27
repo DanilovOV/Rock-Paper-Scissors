@@ -37,6 +37,7 @@ const setMode = (value: GameMode) => {
 }
 const toggleMode = () => {
 	setMode(gameMode.value === 'standart' ? 'bonus' : 'standart')
+	setScore(0)
 	isComparsion.value = false
 }
 
