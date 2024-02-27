@@ -41,6 +41,11 @@ const toggleMode = () => {
 	isComparsion.value = false
 }
 
+const restart = () => {
+	setScore(0)
+	isComparsion.value = false
+}
+
 onMounted(() => {
 	gameMode.value = getMode()
 	score.value = getScore()
@@ -65,7 +70,11 @@ onMounted(() => {
 					@comparsion="handleComparsion"
 					@restart="isComparsion = false"
 				/>
-				<TheAside :mode="gameMode" @change-mode="toggleMode" />
+				<TheAside
+					:mode="gameMode"
+					@change-mode="toggleMode"
+					@restart="restart"
+				/>
 			</div>
 		</div>
 	</div>

@@ -8,6 +8,7 @@ const props = defineProps<{ mode: GameMode }>()
 const isOpenRules = ref(false)
 const emits = defineEmits<{
 	changeMode: []
+	restart: []
 }>()
 
 const openRulesModal = () => {
@@ -17,6 +18,7 @@ const openRulesModal = () => {
 
 <template>
 	<aside class="aside">
+		<AppButton @click="emits('restart')">Рестарт</AppButton>
 		<AppButton @click="emits('changeMode')">{{
 			props.mode === 'standart' ? 'Бонус' : 'Стандарт'
 		}}</AppButton>
