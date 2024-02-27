@@ -18,7 +18,7 @@ const openRulesModal = () => {
 <template>
 	<aside class="aside">
 		<AppButton @click="emits('changeMode')">{{
-			props.mode === 'standart' ? 'Стандарт' : 'Бонус'
+			props.mode === 'standart' ? 'Бонус' : 'Стандарт'
 		}}</AppButton>
 		<AppButton @click="openRulesModal">Правила</AppButton>
 	</aside>
