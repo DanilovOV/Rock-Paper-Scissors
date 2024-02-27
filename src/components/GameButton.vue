@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import type { GameElementValue } from '@/gameElements'
 
-defineProps<{ data: GameElementValue; disabled?: boolean }>()
+defineProps<{ data: GameElementValue; disabled?: boolean; big?: boolean }>()
 </script>
 
 <template>
 	<div
-		:class="['game-button', { disabled }]"
+		:class="['game-button', { disabled, big }]"
 		:style="{ background: data.color }"
 	>
 		<div class="game-button__inner">
@@ -32,6 +32,11 @@ defineProps<{ data: GameElementValue; disabled?: boolean }>()
 		pointer-events: none;
 	}
 
+	&.big {
+		width: clamp(90px, 30vw, 255px);
+		height: clamp(90px, 30vw, 255px);
+	}
+
 	&:hover {
 		#{$this}__inner {
 			opacity: 0.85;
@@ -43,8 +48,8 @@ defineProps<{ data: GameElementValue; disabled?: boolean }>()
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: calc(100% - 25px);
-		height: calc(100% - 25px);
+		width: 80%;
+		height: 80%;
 		border-radius: 50%;
 		background: var(--c-white);
 		color: var(--c-dark);
