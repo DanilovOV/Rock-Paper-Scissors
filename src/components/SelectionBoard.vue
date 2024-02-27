@@ -36,7 +36,7 @@ onMounted(() => {
 		</div>
 		<div class="board__result">
 			<div>{{ UiComparsionStatus[winner] }}</div>
-			<AppButton @click="emits('restart')">Попробовать снова</AppButton>
+			<AppButton @click="emits('restart')">Играть снова</AppButton>
 		</div>
 		<div class="board__choise">
 			<div>Компьютер выбрал</div>
@@ -54,7 +54,10 @@ onMounted(() => {
 	&__choise {
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		align-items: center;
+		gap: 30px;
+		text-transform: uppercase;
+		letter-spacing: 2px;
 	}
 
 	&__result {
@@ -62,6 +65,8 @@ onMounted(() => {
 		flex-direction: column;
 		align-items: center;
 		gap: 30px;
+		text-transform: uppercase;
+		letter-spacing: 2px;
 	}
 }
 </style>
