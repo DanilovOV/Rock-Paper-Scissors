@@ -1,9 +1,14 @@
 <template>
-	<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-		<path
-			fill="#b5b8c8"
-			fill-rule="evenodd"
-			d="M16.97 0l2.122 2.121-7.425 7.425 7.425 7.425-2.121 2.12-7.425-7.424-7.425 7.425L0 16.97l7.425-7.425L0 2.121 2.121 0l7.425 7.425L16.971 0z"
-		/>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+		<g id="Menu / Close_LG">
+			<path
+				id="Vector"
+				d="M21 21L12 12M12 12L3 3M12 12L21.0001 3M12 12L3 21.0001"
+				stroke="#000000"
+				stroke-width="3"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			/>
+		</g>
 	</svg>
 </template>
