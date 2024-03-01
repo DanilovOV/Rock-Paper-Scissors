@@ -7,21 +7,21 @@ interface Props {
 	height?: number
 	stroke?: boolean
 	size?: number
-	defaultSize?: boolean
+	nativeSize?: boolean
 }
 const defaultSize = 20
 const props = defineProps<Props>()
 
 const iconWidth = computed(() => {
-	return props.size || props.width || props.defaultSize
-		? defaultSize
-		: undefined
+	return (
+		props.size || props.width || (props.nativeSize ? undefined : defaultSize)
+	)
 })
 
 const iconHeight = computed(() => {
-	return props.size || props.height || props.defaultSize
-		? defaultSize
-		: undefined
+	return (
+		props.size || props.height || (props.nativeSize ? undefined : defaultSize)
+	)
 })
 
 const icon = defineAsyncComponent(

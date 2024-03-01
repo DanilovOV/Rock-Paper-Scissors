@@ -39,7 +39,7 @@ const closeModal = () => {
 			/>
 
 			<button class="dialog__close" @click="closeModal">
-				<AppIcon name="Close" />
+				<AppIcon name="Close" stroke />
 			</button>
 		</div>
 	</div>
